@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>canva trail</title>
+</head>
+
+<body>
+    <canvas id="myCanvas" width="600" height="300"></canvas>
+
+    <script>
+        // Get the canvas element and its context
+        var canvas = document.getElementById("myCanvas");
+        var context = canvas.getContext("2d");
+
+        // Define your data (x and y values)
+        var data = [
+            { x: 0, y: 100 },
+            { x: 60, y: 100 },
+            { x: 100, y: 200 },
+            { x: 250, y: 200 },
+            { x: 300, y: 140 },
+            { x: 320, y: 100 },
+            { x: 450, y: 100 },
+            { x: 450, y: 80 },
+            { x: 0, y: 80 },
+            { x: 0, y: 100 },
+        ];
+
+        // Set up some variables for graph dimensions
+        var graphWidth = canvas.width - 20;
+        var graphHeight = canvas.height - 20;
+
+        // Draw the axes
+        context.beginPath();
+        context.moveTo(0, 0);
+        context.lineTo(10, graphHeight);
+        context.lineTo(graphWidth, graphHeight);
+        context.stroke();
+
+        // Draw the data points and connect them with lines
+        context.beginPath();
+        context.moveTo(10, graphHeight - data[0].y);
+
+        for (var i = 1; i < data.length; i++) {
+            context.lineTo(10 + data[i].x, graphHeight - data[i].y);
+        }
+
+        context.fillStyle = "blue";
+        context.lineWidth = 2;
+        context.fill();
+    </script>
+</body>
+
+</html>
